@@ -1,0 +1,154 @@
+============================================================
+ĐỒ ÁN: PHÁT HIỆN WEBSITE PHISHING BẰNG CNN
+============================================================
+Thư mục train: d:\DA_CK\train
+Thư mục test: d:\DA_CK\test
+
+Các lớp dữ liệu: ['legitimate', 'phishing']
+Số lượng lớp: 2
+Loại bài toán: Phân loại ảnh website legitimate/phishing
+
+============================================================
+XÂY DỰNG MÔ HÌNH LeNet-5 CHO PHÂN LOẠI PHISHING
+============================================================
+Model: "LeNet5_Phishing_Detector"
+┏━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┳━━━━━━━━━━━━━━━━━┓
+┃ Layer (type)                         ┃ Output Shape                ┃         Param # ┃
+┡━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━━━━━━━━━━━━━╇━━━━━━━━━━━━━━━━━┩
+│ conv1 (Conv2D)                       │ ?                           │     0 (unbuilt) │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ pool1 (AveragePooling2D)             │ ?                           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ conv2 (Conv2D)                       │ ?                           │     0 (unbuilt) │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ pool2 (AveragePooling2D)             │ ?                           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ flatten (Flatten)                    │ ?                           │     0 (unbuilt) │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ fc1 (Dense)                          │ ?                           │     0 (unbuilt) │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout1 (Dropout)                   │ ?                           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ fc2 (Dense)                          │ ?                           │     0 (unbuilt) │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ dropout2 (Dropout)                   │ ?                           │               0 │
+├──────────────────────────────────────┼─────────────────────────────┼─────────────────┤
+│ output (Dense)                       │ ?                           │     0 (unbuilt) │
+└──────────────────────────────────────┴─────────────────────────────┴─────────────────┘
+ Total params: 0 (0.00 B)
+ Trainable params: 0 (0.00 B)
+ Non-trainable params: 0 (0.00 B)
+
+
+============================================================
+BẮT ĐẦU HUẤN LUYỆN MÔ HÌNH
+Số epochs: 20
+Batch size: 32
+============================================================
+
+Thời gian huấn luyện: 160.89 giây
+
+Đã lưu mô hình vào: d:\DA_CK\LeNet-5_Phishing_Detector.h5
+
+============================================================
+ĐÁNH GIÁ MÔ HÌNH TRÊN TEST SET
+============================================================
+
+Kết quả evaluate trên test set:
+  - Test Loss: 0.9418
+  - Test Accuracy: 33.07%
+  - Epoch có val_loss thấp nhất: epoch 2
+
+============================================================
+TÍNH TOÁN CÁC CHỈ SỐ ĐÁNH GIÁ
+============================================================
+
+KẾT QUẢ ĐÁNH GIÁ TỔNG THỂ:
+  - Accuracy: 33.07%
+  - Precision (macro): 16.53%
+  - Recall (macro): 50.00%
+  - F1-Score (macro): 24.85%
+
+KẾT QUẢ THEO TỪNG LỚP:
+  - legitimate:
+      Precision: 0.00%
+      Recall: 0.00%
+      F1-Score: 0.00%
+  - phishing:
+      Precision: 33.07%
+      Recall: 100.00%
+      F1-Score: 49.70%
+
+============================================================
+BÁO CÁO PHÂN LOẠI CHI TIẾT (Classification Report)
+============================================================
+              precision    recall  f1-score   support
+
+  legitimate     0.0000    0.0000    0.0000      1091
+    phishing     0.3307    1.0000    0.4970       539
+
+    accuracy                         0.3307      1630
+   macro avg     0.1653    0.5000    0.2485      1630
+weighted avg     0.1093    0.3307    0.1643      1630
+
+
+Đã lưu ma trận nhầm lẫn vào: d:\DA_CK\LeNet-5_Phishing_Detector_confusion_matrix.png
+
+============================================================
+CHI PHÍ TÍNH TOÁN
+============================================================
+  - Tổng số tham số: 389,646 (≈ 0.3896 triệu)
+  - Thời gian huấn luyện: 160.89 giây
+  - Thời gian evaluate: 34.32 giây
+  - Thời gian suy luận (toàn test set): 11.9695 giây
+  - Tổng thời gian (train + infer): 172.86 giây
+  - Thời gian suy luận trung bình/mẫu: 0.007343 giây
+  - Số mẫu test: 1630
+
+============================================================
+BẢNG TỔNG HỢP KẾT QUẢ
+============================================================
+Mô hình                   | Accuracy     | Precision    | Recall       | F1-Score     | Params (M)  
+-----------------------------------------------------------------------------------------------
+LeNet-5_Phishing_Detector | 33.07       % | 16.53       % | 50.00       % | 24.85       % | 0.3896      
+
+Đã lưu đồ thị loss vào: d:\DA_CK\LeNet-5_Phishing_Detector_loss.png
+Đã lưu đồ thị accuracy vào: d:\DA_CK\LeNet-5_Phishing_Detector_accuracy.png
+
+============================================================
+KẾT LUẬN & NHẬN XÉT
+============================================================
+
+1. KHẢ NĂNG PHÁT HIỆN PHISHING:
+   - Accuracy đạt 33.07% trên tập test.
+   - Recall của lớp phishing: 100.00% (tỷ lệ phát hiện đúng website lừa đảo).
+   - Đây là chỉ số quan trọng nhất vì cần phát hiện càng nhiều web lừa đảo càng tốt.
+
+2. ĐIỂM MẠNH CỦA MÔ HÌNH:
+   - Kích thước mô hình nhỏ (0.389646 triệu tham số), phù hợp triển khai real-time.
+   - Thời gian suy luận nhanh (0.0073 giây/ảnh).
+   - Không yêu cầu phần cứng mạnh (có thể chạy trên CPU).
+
+3. ĐIỂM YẾU & HƯỚNG CẢI THIỆN:
+   - Nếu accuracy chưa cao, có thể tăng kích thước ảnh lên 128x128 hoặc 224x224.
+   - Sử dụng transfer learning (VGG16, ResNet50) để cải thiện độ chính xác.
+   - Tăng cường data augmentation hoặc thu thập thêm dữ liệu.
+
+4. ỨNG DỤNG THỰC TẾ:
+   - Có thể tích hợp vào trình duyệt như một extension cảnh báo website lừa đảo.
+   - Triển khai trên server để quét hàng loạt URL.
+
+
+============================================================
+DEMO DỰ ĐOÁN TRÊN MỘT SỐ ẢNH MẪU
+============================================================
+
+Ảnh: other_test (1).jpg
+  - Dự đoán: phishing
+  - Độ tin cậy: 71.00%
+  - Là phishing: CÓ
+
+Ảnh: adobe_test (1).png
+  - Dự đoán: phishing
+  - Độ tin cậy: 71.01%
+  - Là phishing: CÓ
