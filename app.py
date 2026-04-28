@@ -338,7 +338,7 @@ else:
     </div>
     """, unsafe_allow_html=True)
     
-    st.image("https://fptcloud.com/wp-content/uploads/2022/05/phishing-la-gi-1.jpg", 
+    st.image("https://cdn.pixabay.com/photo/2018/05/15/14/06/phishing-3400788_1280.jpg", 
              caption="⚠️ Cảnh báo: Tấn công Phishing đang gia tăng - Hãy kiểm tra trước khi nhập thông tin!",
              use_container_width=True)
 
